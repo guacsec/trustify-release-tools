@@ -16,10 +16,10 @@ repos:
     repo: release-tools
   - org: trustification
     repo: trustify-operator
-  - org: trustification
-    repo: trustify-helm-charts
-  - org: trustification
-    repo: trustify
+  # - org: trustification
+  #   repo: trustify-helm-charts
+  # - org: trustification
+  #   repo: trustify
   - org: trustification
     repo: trustify-ui
   - org: trustification
