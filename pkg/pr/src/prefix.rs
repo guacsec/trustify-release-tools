@@ -4,7 +4,7 @@
 use core::fmt;
 use regex::Regex;
 
-use crate::error::Result;//these prefixes in the PR title prevent validation failure
+use crate::error::Result;
 
 //these prefixes in the PR title prevent validation failure
 const PREFIX_FEATURE: (&str, &str) = (":sparkles:", "✨");
