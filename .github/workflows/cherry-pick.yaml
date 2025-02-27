@@ -1,11 +1,9 @@
-#Workflow to backport PRs to another branch by attaching appropriate labels
 name: Cherry Pick
 
 on:
   workflow_call:
 
 jobs:
-  #dtect the branches to backport the PR to from the text of the attached label
   branches:
     runs-on: ubuntu-latest
     outputs:
@@ -31,7 +29,6 @@ jobs:
 
             return branches
 
-  # create the new backport PR in the chosen branch
   cherry-pick:
     runs-on: ubuntu-latest
     needs: branches
