@@ -4,7 +4,7 @@
 use core::fmt;
 use regex::Regex;
 
-use crate::error::Result;
+use crate::error::Result;//these prefixes in the PR title prevent validation failure
 
 //these prefixes in the PR title prevent validation failure
 const PREFIX_FEATURE: (&str, &str) = (":sparkles:", "✨");
@@ -127,6 +127,7 @@ mod tests {
     }
 
     #[test]
+    //test title validation
     fn title_cases() {
         let test_cases = vec![
             TestCase {
