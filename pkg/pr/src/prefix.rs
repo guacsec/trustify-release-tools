@@ -6,6 +6,7 @@ use regex::Regex;
 
 use crate::error::Result;
 
+//these prefixes in the PR title prevent validation failure
 const PREFIX_FEATURE: (&str, &str) = (":sparkles:", "✨");
 const PREFIX_BUG_FIX: (&str, &str) = (":bug:", "🐛");
 const PREFIX_DOCS: (&str, &str) = (":book:", "📖");
