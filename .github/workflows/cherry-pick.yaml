@@ -1,11 +1,9 @@
-#Workflow to allow PRs to be backported by attaching an appropriate label
 name: Cherry Pick
 
 on:
   workflow_call:
 
 jobs:
-  #Job to discover the branches to backport to via analysis of attached labels
   branches:
     runs-on: ubuntu-latest
     outputs:
@@ -30,7 +28,7 @@ jobs:
             console.log(`Branches: ${branches}`);
 
             return branches
-  #job to create backport PR to the chosen branches
+
   cherry-pick:
     runs-on: ubuntu-latest
     needs: branches
