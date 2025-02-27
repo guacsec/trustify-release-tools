@@ -5,6 +5,7 @@ on:
   workflow_call:
 
 jobs:
+  #dtect the branches to backport the PR to from the text of the attached label
   branches:
     runs-on: ubuntu-latest
     outputs:
