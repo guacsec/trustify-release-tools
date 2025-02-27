@@ -31,6 +31,7 @@ jobs:
 
             return branches
 
+  # create the new backport PR in the chosen branch
   cherry-pick:
     runs-on: ubuntu-latest
     needs: branches
