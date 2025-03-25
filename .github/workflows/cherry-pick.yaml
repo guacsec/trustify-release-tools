@@ -23,8 +23,8 @@ jobs:
             const labels = issue.labels.map(label => label.name);
             console.log(`Labels: ${labels}`);
 
-            const branches = labels.filter(label => label.startsWith('backport '))
-              .map(label => label.substr(9));
+            const branches = labels.filter(label => label.startsWith('cherry-pick/'))
+              .map(label => label.substr(12));
             console.log(`Branches: ${branches}`);
 
             return branches
@@ -54,4 +54,6 @@ jobs:
         uses: korthout/backport-action@v3
         with:
           github_token: ${{ steps.get_workflow_token.outputs.token }}
+          label_pattern: >-
+            ^cherry-pick\/([^ ]+)$
           pull_title: '${pull_title} [Backport ${target_branch}]'
