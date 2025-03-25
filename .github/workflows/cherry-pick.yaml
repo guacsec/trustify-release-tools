@@ -56,5 +56,4 @@ jobs:
           github_token: ${{ steps.get_workflow_token.outputs.token }}
           label_pattern: >-
             ^cherry-pick\/([^ ]+)$
-          pull_title: >-
-            :seedling: [${target_branch}] ${pull_title}
+          pull_title: '${pull_title} [Backport ${target_branch}]'
