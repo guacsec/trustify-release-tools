@@ -23,9 +23,7 @@ repos:
   - org: trustification
     repo: trustify-ui
   - org: trustification
-    repo: trustify-ui-tests
-  - org: trustification
-    repo: trustify-api-tests
+    repo: trustify-tests
 
 # Labels
 # List of labels, their color and description, that should exist in the specified repositories.
