@@ -8,11 +8,11 @@ on:
       - closed
 
 jobs:
-  cherry_pick_job:
+  backport_job:
     permissions:
       pull-requests: write
       contents: write
       actions: write
     if: github.event.pull_request.merged == true
     secrets: inherit
-    uses: ./.github/workflows/cherry-pick.yaml
+    uses: ./.github/workflows/backport.yaml
