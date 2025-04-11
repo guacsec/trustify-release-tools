@@ -15,9 +15,9 @@ You can find our reusable GitHub Workflows in [./.github/workflows](./.github/wo
 
 ## Reusable Actions
 
-### [cherry-pick](./.github/workflows/cherry-pick.yaml)
+### [backport](./.github/workflows/backport.yaml)
 
-Allows backporting changes of a PR into another branch. Requires the `cherry-pick/branch_name` label to be set to the PR.
+Allows backporting changes of a PR into another branch. Requires the `backport/branch_name` label to be set to the PR.
 
 To use it, Opt-in adding this action to your repository:
 
@@ -32,11 +32,11 @@ on:
       - closed
 
 jobs:
-  cherry_pick_job:
+  backport_job:
     permissions:
       pull-requests: write
       contents: write
     if: github.event.pull_request.merged == true
     secrets: inherit
-    uses: trustification/release-tools/.github/workflows/cherry-pick.yaml@main
+    uses: trustification/release-tools/.github/workflows/backport.yaml@main
 ```
