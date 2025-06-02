@@ -95,6 +95,9 @@ labels:
   - color: fef2a0
     description: This PR should be backported to release/0.2.z branch.
     name: backport release/0.2.z
+  - color: c2e0c6
+    description: This PR should be backported to release/0.3.z branch.
+    name: backport release/0.3.z
 
 # Milestones
 # List of milestones, and their state, that should exist in the specified repositories.
