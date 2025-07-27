@@ -51,6 +51,13 @@ on:
       registry_password:
         description: "Registry password"
         required: true
+    outputs:
+      tag:
+        description: "The tag of the image pushed to the registry"
+        value: ${{ jobs.prepare.outputs.tag }}
+      digest:
+        description: "The digest of the image pushed to the registry"
+        value: ${{ jobs.manifest.outputs.digest }}
 
 jobs:
   prepare:
@@ -165,6 +172,8 @@ jobs:
   manifest:
     needs: [ prepare, build ]
     runs-on: ubuntu-latest
+    outputs:
+      digest: ${{ steps.push.outputs.digest }}
     env:
       tag: ${{ needs.prepare.outputs.tag }}
     steps:
