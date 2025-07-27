@@ -47,7 +47,7 @@ async fn main() -> impl Termination {
     match exec().await {
         Ok(_) => ExitCode::SUCCESS,
         Err(error) => {
-            println!("{:#?}", error);
+            println!("{error:#?}");
             ExitCode::FAILURE
         }
     }
@@ -130,7 +130,7 @@ async fn exec() -> crate::error::Result<()> {
     }
 
     let data = serde_yml::to_string(&updates).unwrap();
-    println!("{}", data);
+    println!("{data}");
 
     if !cli.confirm {
         ActionCommand::Notice("Running without confirm, no mutations will be made".to_string())
@@ -149,7 +149,7 @@ async fn exec() -> crate::error::Result<()> {
                         wanted.description.clone().unwrap_or("".to_string()),
                     )
                     .await?;
-                println!("Label created: {:?}", resp);
+                println!("Label created: {resp:?}");
             }
             Why::Changed(wanted, current) => {
                 let resp: Value = client
@@ -165,7 +165,7 @@ async fn exec() -> crate::error::Result<()> {
                         })),
                     )
                     .await?;
-                println!("Label updated: {:?}", resp);
+                println!("Label updated: {resp:?}");
             }
         };
     }
