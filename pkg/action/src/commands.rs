@@ -14,6 +14,6 @@ impl ActionCommand {
             Self::Error(message) => ("error", message),
         };
 
-        println!("::{}::{}", command, message);
+        println!("::{command}::{message}");
     }
 }

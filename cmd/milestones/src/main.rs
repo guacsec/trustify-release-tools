@@ -49,7 +49,7 @@ async fn main() -> impl Termination {
     match exec().await {
         Ok(_) => ExitCode::SUCCESS,
         Err(error) => {
-            println!("{:#?}", error);
+            println!("{error:#?}");
             ExitCode::FAILURE
         }
     }
@@ -181,7 +181,7 @@ async fn exec() -> crate::error::Result<()> {
 
     let data = serde_yml::to_string(&updates).unwrap();
     ActionCommand::Notice("Changes will be made".to_string()).send_command();
-    println!("{}", data);
+    println!("{data}");
 
     if !cli.confirm {
         ActionCommand::Notice("Running without confirm, no mutations will be made".to_string())
@@ -220,7 +220,7 @@ async fn exec() -> crate::error::Result<()> {
                         Some(&payload),
                     )
                     .await?;
-                println!("Milestone created: {:?}", resp);
+                println!("Milestone created: {resp:?}");
                 resp
             }
             Why::Changed(wanted_milestone, current_number, _current_milestone) => {
@@ -240,7 +240,7 @@ async fn exec() -> crate::error::Result<()> {
                         Some(&payload),
                     )
                     .await?;
-                println!("Milestone updated: {:?}", resp);
+                println!("Milestone updated: {resp:?}");
                 resp
             }
         };

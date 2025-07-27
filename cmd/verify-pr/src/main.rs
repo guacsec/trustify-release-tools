@@ -40,7 +40,7 @@ fn verify_pr() -> error::Result<()> {
     // Check the title of the PR
     let pr_type = PRType::from_title(&event.pull_request.title)?;
 
-    println!("{:?}", pr_type);
+    println!("{pr_type:?}");
     Ok(())
 }
 

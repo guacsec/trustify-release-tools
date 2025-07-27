@@ -27,12 +27,12 @@ pub enum PRType {
 impl fmt::Display for PRType {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            Self::Feature(title) => write!(f, "PR type 'Feature'\n PR title '{}'", title),
-            Self::BugFix(title) => write!(f, "PR type 'Bug'\n PR title '{}'", title),
-            Self::Docs(title) => write!(f, "PR type 'Docs'\n PR title '{}'", title),
-            Self::Infra(title) => write!(f, "PR type 'Infra'\n PR title '{}'", title),
-            Self::Breaking(title) => write!(f, "PR type 'Breaking'\n PR title '{}'", title),
-            Self::NoNote(title) => write!(f, "PR type 'NoNote'\n PR title '{}'", title),
+            Self::Feature(title) => write!(f, "PR type 'Feature'\n PR title '{title}'"),
+            Self::BugFix(title) => write!(f, "PR type 'Bug'\n PR title '{title}'"),
+            Self::Docs(title) => write!(f, "PR type 'Docs'\n PR title '{title}'"),
+            Self::Infra(title) => write!(f, "PR type 'Infra'\n PR title '{title}'"),
+            Self::Breaking(title) => write!(f, "PR type 'Breaking'\n PR title '{title}'"),
+            Self::NoNote(title) => write!(f, "PR type 'NoNote'\n PR title '{title}'"),
         }
     }
 }
