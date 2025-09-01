@@ -38,5 +38,5 @@ jobs:
       contents: write
     if: github.event.pull_request.merged == true
     secrets: inherit
-    uses: trustification/release-tools/.github/workflows/backport.yaml@main
+    uses: guacsec/release-tools/.github/workflows/backport.yaml@main
 ```

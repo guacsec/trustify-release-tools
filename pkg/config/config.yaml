@@ -10,20 +10,10 @@
 #   - org: the organization of the repo
 #     repo: the repo
 repos:
-  - org: trustification
-    repo: trustification.github.io
-  - org: trustification
-    repo: release-tools
-  - org: trustification
-    repo: trustify-operator
-  # - org: trustification
-  #   repo: trustify-helm-charts
-  # - org: trustification
-  #   repo: trustify
-  - org: trustification
+  - org: guacsec
+    repo: trustify-release-tools
+  - org: guacsec
     repo: trustify-ui
-  - org: trustification
-    repo: trustify-tests
 
 # Labels
 # List of labels, their color and description, that should exist in the specified repositories.
