@@ -44,7 +44,7 @@ jobs:
                 const comment = comments.find(
                   (comment) =>
                     comment.user &&
-                    comment.user.login == "trustification-ci-bot[bot]" &&
+                    comment.user.login == "trustify-ci-bot[bot]" &&
                     comment.body &&
                     comment.body.includes(body)
                 );
