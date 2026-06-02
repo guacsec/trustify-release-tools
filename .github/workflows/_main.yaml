@@ -1,6 +1,10 @@
 name: PR tests
 
 on:
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - "**.md"
   pull_request:
     branches: ["main"]
     paths-ignore:
@@ -30,6 +34,8 @@ jobs:
 
   ci:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - name: Set up Rust
@@ -40,8 +46,20 @@ jobs:
         run: cargo check
       - name: Crate Clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
-      - name: Crate Test
-        run: cargo test
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-llvm-cov
+      - name: Install llvm-tools-preview
+        run: rustup component add llvm-tools-preview
+      - name: Crate Test with coverage
+        run: cargo llvm-cov --codecov --output-path codecov.json
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          use_oidc: true
+          flags: unit-tests
+          files: codecov.json
+          slug: guacsec/trustify-release-tools
 
   check-milestones:
     needs: build
