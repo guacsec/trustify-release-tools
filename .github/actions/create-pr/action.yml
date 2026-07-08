@@ -30,7 +30,7 @@ runs:
       with:
         token: ${{ steps.get_workflow_token.outputs.token }}
         path: ${{ inputs.path }}
-        commit-message: "update client/openapi/trustd.yaml"
+        commit-message: ${{ inputs.commit-message }}
         signoff: true
         branch-suffix: short-commit-hash
         title: ${{ inputs.title }}
