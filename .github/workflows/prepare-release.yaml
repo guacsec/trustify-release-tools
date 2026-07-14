@@ -87,7 +87,7 @@ jobs:
         run: |
           VERSION_ARG="${{ inputs.version-override || inputs.bump }}"
           echo "Bumping version with: $VERSION_ARG"
-          cargo release version "${VERSION_ARG}" -x
+          cargo release version "${VERSION_ARG}" -x --no-confirm
 
       - name: Determine new version
         id: version
