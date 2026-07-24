@@ -50,7 +50,7 @@ runs:
         echo "Space after clearing:"
         df . -h
     - name: Checkout Push to Registry action
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: configure QEMU action...
       uses: docker/setup-qemu-action@master

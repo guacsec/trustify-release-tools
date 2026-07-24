@@ -1,7 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directories:
+      - "/"
+      - "/.github/actions/build-push"
+      - "/.github/actions/create-pr"
+      - "/create-release"
     schedule:
       interval: "weekly"
     commit-message:

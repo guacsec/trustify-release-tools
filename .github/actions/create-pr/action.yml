@@ -20,12 +20,12 @@ runs:
   steps:
     - name: Get Token
       id: get_workflow_token
-      uses: peter-murray/workflow-application-token-action@v3
+      uses: peter-murray/workflow-application-token-action@v5
       with:
         application_id: ${{ env.TRUSTIFICATION_BOT_ID }}
         application_private_key: ${{ env.TRUSTIFICATION_BOT_KEY }}
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v7
+      uses: peter-evans/create-pull-request@v8
       id: pr
       with:
         token: ${{ steps.get_workflow_token.outputs.token }}
