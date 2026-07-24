@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Check for backport labels
         id: backport_branches
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const { data: issue } = await github.rest.issues.get({
@@ -38,20 +38,20 @@ jobs:
         branch: ${{ fromJson(needs.branches.outputs.branches) }}
     steps:
       - name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: ${{ matrix.branch }}
           fetch-depth: 0
 
       - name: Get Token
         id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v4
+        uses: peter-murray/workflow-application-token-action@v5
         with:
           application_id: ${{ vars.TRUSTIFICATION_BOT_ID }}
           application_private_key: ${{ secrets.TRUSTIFICATION_BOT_KEY }}
 
       - name: Backport
-        uses: korthout/backport-action@v3
+        uses: korthout/backport-action@v4
         with:
           github_token: ${{ steps.get_workflow_token.outputs.token }}
           pull_title: '${pull_title} [Backport ${target_branch}]'
