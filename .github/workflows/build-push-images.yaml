@@ -187,10 +187,10 @@ jobs:
       - name: Create manifest
         shell: bash
         run: |
-          podman manifest create "${{ inputs.registry }}/${{ inputs.image_name }}:${{ env.tag }}"
+          podman manifest create "${{ inputs.image_name }}:${{ env.tag }}"
           for arch in $(echo '${{ inputs.architectures }}' | jq -r '.[]'); do
             podman manifest add \
-              "${{ inputs.registry }}/${{ inputs.image_name }}:${{ env.tag }}" \
+              "${{ inputs.image_name }}:${{ env.tag }}" \
               "${{ inputs.registry }}/${{ inputs.image_name }}:${{ env.tag }}-${arch}"
           done
 
