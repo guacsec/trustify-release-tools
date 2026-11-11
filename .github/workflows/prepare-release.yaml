@@ -13,6 +13,11 @@ on:
         type: string
         default: ""
 
+    outputs:
+      pr-url:
+        description: "URL of the release preparation pull request"
+        value: ${{ jobs.prepare.outputs.pr-url }}
+
 env:
   CARGO_TERM_COLOR: always
 
@@ -23,6 +28,9 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+
+    outputs:
+      pr-url: ${{ steps.pull-request.outputs.pr-url }}
 
     steps:
       - uses: actions/checkout@v7
@@ -120,13 +128,14 @@ jobs:
           git push origin "prepare/${VERSION}"
 
       - name: Create pull request
+        id: pull-request
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           VERSION="${{ steps.version.outputs.version }}"
           BASE="${{ github.ref_name }}"
 
-          gh pr create \
+          PR_URL=$(gh pr create \
             --title "chore: prepare release ${VERSION}" \
             --body "Automated release preparation:
 
@@ -135,4 +144,5 @@ jobs:
           - Regenerated schemas and OpenAPI spec
 
           After merging, follow [RELEASE.md](https://github.com/guacsec/trustify/blob/main/RELEASE.md) for tagging." \
-            --base "${BASE}"
+            --base "${BASE}")
+          echo "pr-url=$PR_URL" >> "$GITHUB_OUTPUT"
